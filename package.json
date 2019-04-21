@@ -1,0 +1,20 @@
+{
+  "name": "esy-python",
+  "version": "3.7.1000",
+  "description": "Python  (Cpython) packaged for esy",
+  "esy": {
+    "buildsInSource": true,
+    "build": [
+      "#{os == 'windows' ? './PCbuild/build.bat -e -p x64 -c Release' : './build.sh' }"
+    ],
+    "exportedEnv": {
+      "PATH":  {
+        "scope": "global",
+        "val": "#{ os == 'windows' ? (self.target_dir / 'PCbuild' / 'amd64' : $PATH) : $PATH }"
+      }
+    }
+  },
+  "dependencies": {
+    "esy-zlib": "prometheansacrifice/esy-zlib#cd046fb7258deabffaabe5d6963454858b04c1d3"
+  }
+}
